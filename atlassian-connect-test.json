@@ -15,10 +15,10 @@
 		"generalPages": [
 			{
 				"url": "/test.html",
-				"key": "chime-pin-page",
+				"key": "github-test",
 				"location": "system.top.navigation.bar",
 				"name": {
-					"value": "Chime Pin"
+					"value": "github test"
 				}
 			}
 			
