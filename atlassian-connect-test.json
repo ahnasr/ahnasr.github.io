@@ -1,0 +1,27 @@
+{
+	"name": "githubTest",
+	"description": "github test",
+	"key": "com.github.test",
+	"baseUrl": "https://ahnasr.github.io",
+	"vendor": {
+		"name": "Testing, Inc.",
+		"url": "http://test.com"
+	},
+	"authentication": {
+		"type": "none"
+	},
+	"apiVersion": 1,
+	"modules": {
+		"generalPages": [
+			{
+				"url": "/test.html",
+				"key": "chime-pin-page",
+				"location": "system.top.navigation.bar",
+				"name": {
+					"value": "Chime Pin"
+				}
+			}
+			
+		]
+	}
+}
