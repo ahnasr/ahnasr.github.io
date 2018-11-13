@@ -2,7 +2,7 @@
 	"name": "codepenTest",
 	"description": "codepen test",
 	"key": "com.codepen.test",
-	"baseUrl": "https://codepen.io/ahnasr/",
+	"baseUrl": "https://ahnasr.github.io",
 	"vendor": {
 		"name": "Testing, Inc.",
 		"url": "http://test.com"
@@ -14,7 +14,7 @@
 	"modules": {
 		"generalPages": [
 			{
-				"url": "/live/QJdYeE",
+				"url": "/codepencontainer.html",
 				"key": "codepen-test",
 				"location": "system.top.navigation.bar",
 				"name": {
