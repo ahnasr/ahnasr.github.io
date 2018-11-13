@@ -1,8 +1,8 @@
 {
-	"name": "githubTest",
-	"description": "github test",
-	"key": "com.github.test",
-	"baseUrl": "https://ahnasr.github.io",
+	"name": "codepenTest",
+	"description": "codepen test",
+	"key": "com.codepen.test",
+	"baseUrl": "https://codepen.io/ahnasr/",
 	"vendor": {
 		"name": "Testing, Inc.",
 		"url": "http://test.com"
@@ -14,11 +14,11 @@
 	"modules": {
 		"generalPages": [
 			{
-				"url": "/test.html",
-				"key": "github-test",
+				"url": "/full/QJdYeE",
+				"key": "codepen-test",
 				"location": "system.top.navigation.bar",
 				"name": {
-					"value": "github test"
+					"value": "codepen test"
 				}
 			}
 			
