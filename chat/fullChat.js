@@ -24,6 +24,8 @@ function setLoginStatus(isAuthenticated) {
 	document.getElementById("loading-div").style.display = "none";
 	document.getElementById("main-tab").style.display = "block";
 	
+	console.log("Authentication: " + isAuthenticated);
+	
 	if(isAuthenticated)
 		client.auth.getCurrentUserProfile().then(setCurrentUser); 
 	else
