@@ -34,5 +34,5 @@ function setLoginStatus(isAuthenticated) {
 
 function setCurrentUser(profile) {
 	currentUser = profile;
-	currentUser.innerHTML = currentUser.name;
+	document.getElementById("currentUser").innerHTML = currentUser.name;
 }
