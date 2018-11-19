@@ -1,0 +1,30 @@
+{
+	"name": "Chime Chat",
+	"description": "Atlassian Chime Chat app",
+	"key": "com.chime.chat",
+	"baseUrl": "https://ahnasr.github.io/chat",
+	"vendor": {
+		"name": "Amazon, Inc.",
+		"url": "https://www.amazon.com"
+	},
+	"authentication": {
+		"type": "none"
+	},
+	"apiVersion": 1,
+	"scopes": [
+		"read"
+	],
+	"modules": {
+		"webPanels": [
+        {
+            "key": "chime-issues-chat",
+            "location": "atl.jira.view.issue.left.context",
+            "weight": 10,
+            "name": {
+                "value": "Example chime chat"
+            },
+            "url": "/index.html?issue_key={issue.key}&issue_id={issue.id}"
+        }
+    ]
+	}
+}
