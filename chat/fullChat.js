@@ -15,7 +15,7 @@ function login() {
 }
 
 function logout() {
-	click.auth.signout();
+	client.auth.signout();
 }
 
 function setLoginStatus(isAuthenticated) {
