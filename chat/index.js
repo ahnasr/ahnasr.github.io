@@ -1,4 +1,4 @@
-const client = new ChimeWebSDK();
+var client;
 var currentUser;
 
 window.addEventListener('load', function() {
@@ -6,6 +6,7 @@ window.addEventListener('load', function() {
 });
 
 function init() {
+	client =  = new ChimeWebSDK();
 	client.auth.checkIsAuthenticated().then(setLoginStatus);
 	client.auth.onAuthStatus(setLoginStatus);
 }
