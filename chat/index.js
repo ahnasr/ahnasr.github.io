@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
 });
 
 function init() {
-	client =  = new ChimeWebSDK();
+	client = new ChimeWebSDK();
 	client.auth.checkIsAuthenticated().then(setLoginStatus);
 	client.auth.onAuthStatus(setLoginStatus);
 }
