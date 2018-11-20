@@ -131,14 +131,14 @@ function addMsgToChat(msg) {
 	chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 		
-async function getIssue() {
+function getIssue() {
 	var urlParams = new URLSearchParams(window.location.search);
 	var searchJql = 'issueKey = ' + urlParams.get("issue_key");
 	console.log(searchJql);
 	AP.require('request', function(request) {
 		request({
 			url: '/rest/api/latest/search?jql=' + encodeURIComponent(searchJql),
-			success: function(response) {
+			success: async function(response) {
 				// convert the string response to JSON
 				response = JSON.parse(response);
 				var responseText = JSON.stringify(response);
