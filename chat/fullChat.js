@@ -43,15 +43,16 @@ function setCurrentUser(profile) {
 	currentUser = profile;
 	document.getElementById("currentUser").innerHTML = currentUser.name;
 	getIssue();
-	//addContact("liyuchun@amazon.com");
-	//addContact("slemahm@amazon.com");
 }
 
-function addContact(email) {
-	client.contact.addContact(email).then(function(profile) {
+async function addContact(email) {
+	/*client.contact.addContact(email).then(function(profile) {
 		contacts[profile.profileId] = profile;
 		addToContactsBar(profile);
-	});
+	});*/
+	const profile = await client.contact.addContact(email);
+	contacts[profile.profileId] = profile;
+	addToContactsBar(profile);
 }
 
 function addToContactsBar(profile) {
@@ -130,7 +131,7 @@ function addMsgToChat(msg) {
 	chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 		
-function getIssue() {
+async function getIssue() {
 	var urlParams = new URLSearchParams(window.location.search);
 	var searchJql = 'issueKey = ' + urlParams.get("issue_key");
 	console.log(searchJql);
@@ -144,10 +145,10 @@ function getIssue() {
 				console.log(responseText);
 				var reporter = response.issues[0].fields.reporter;
 				if(reporter.emailAddress != currentUser.primaryEmail)
-					addContact(reporter.emailAddress);
+					await addContact(reporter.emailAddress);
 				var assignee = response.issues[0].fields.assignee;
 				if(assignee && assignee.emailAddress != reporter.emailAddress && assignee.emailAddress != currentUser.primaryEmail)
-					addContact(assignee.emailAddress);
+					await addContact(assignee.emailAddress);
 			},
 			error: function() {
 				console.log(arguments);
