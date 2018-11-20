@@ -59,28 +59,7 @@
 		</td>
 		</tr>
 	</table>
-	
-    <script id="connect-loader" data-options="sizeToParent:true;">
-         (function() {
-             var getUrlParam = function (param) {
-                 var codedParam = (new RegExp(param + '=([^&]*)')).exec(window.location.search)[1];
-                 return decodeURIComponent(codedParam);
-             };
-
-             var baseUrl = getUrlParam('xdm_e') + getUrlParam('cp');
-             var options = document.getElementById('connect-loader').getAttribute('data-options');
-
-             var script = document.createElement("script");
-             script.src = baseUrl + '/atlassian-connect/all.js';
-
-             if(options) {
-                 script.setAttribute('data-options', options);
-             }
-
-             document.getElementsByTagName("head")[0].appendChild(script);
-         })();
-    </script>
-	
+	<script src="https://bitbucket.org/atlassian-connect/all.js" data-options="resize:false"></script>
 	<script src="https://g.app.chime.aws/embed/sdk-0.1.2.js"></script>
 	<script src="fullChat.js"></script>
  </body>
