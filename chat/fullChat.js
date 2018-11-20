@@ -42,9 +42,9 @@ function setLoginStatus(isAuthenticated) {
 function setCurrentUser(profile) {
 	currentUser = profile;
 	document.getElementById("currentUser").innerHTML = currentUser.name;
-	//getIssue();
-	addContact("liyuchun@amazon.com");
-	addContact("slemahm@amazon.com");
+	getIssue();
+	//addContact("liyuchun@amazon.com");
+	//addContact("slemahm@amazon.com");
 }
 
 function addContact(email) {
@@ -133,6 +133,7 @@ function addMsgToChat(msg) {
 function getIssue() {
 	var urlParams = new URLSearchParams(window.location.search);
 	var searchJql = 'issueKey = ' + urlParams.get("issue_key");
+	console.log(searchJql);
 	AP.require('request', function(request) {
 		request({
 			url: '/rest/api/latest/search?jql=' + encodeURIComponent(searchJql),
@@ -140,8 +141,11 @@ function getIssue() {
 				// convert the string response to JSON
 				response = JSON.parse(response);
 				var responseText = JSON.stringify(response);
+				console.log(responseText);
 				var reporterEmail = response.issues[0].fields.reporter.emailAddress;
 				var assigneeEmail = response.issues[0].fields.assignee.emailAddress;
+				console.log(reporterEmail);
+				console.log(assigneeEmail);
 				if(reporterEmail != currentUser.primaryEmail)
 					addContact(reporterEmail);
 				if(assigneeEmail != currentUser.primaryEmail)
