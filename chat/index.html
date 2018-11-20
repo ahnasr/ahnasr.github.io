@@ -10,6 +10,10 @@
 		padding: 10px;
 		margin: 10px 0;
 	}
+	.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+	}
 	#main-tab {
 		display: none;
 	}
@@ -23,14 +27,18 @@
 		Loading...
 	</div>
 	<table id="main-tab" class="hide">
+	<tr>
+	<td style="border:1px solid;">
+	<table  style="border-collapse:collapse;">
 		<tr>
-			<td id="currentUser" colspan="2">
+			<td colspan="2" align="right" style="border:1px solid; padding-left:1em; padding-right:1em;">
+				<a id="login-link" href="#msg-text" onclick="login()">Login</a>
+				<div id="currentUser"></div>
+				<a id="logout-link" href="#login-link" onclick="logout()">Logout</a>
 			</td>
 		</tr>
 		<tr>
-			<td id="sideBar">
-				<a id="login-link" href="#msg-text" onclick="login()">Log in</a>
-				<a id="logout-link" href="#login-link" onclick="logout()">Log out</a>
+			<td id="sideBar" style="vertical-align:top; border:1px solid">
 			</td>
 			<td>
 				<table id="chat-tab">
@@ -46,6 +54,9 @@
 					</tr>
 				</table>
 			</td>
+		</tr>
+		</table>
+		</td>
 		</tr>
 	</table>
 	
