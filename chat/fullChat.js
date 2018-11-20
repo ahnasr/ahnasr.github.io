@@ -33,6 +33,7 @@ function setLoginStatus(isAuthenticated) {
 		document.getElementById("currentUser").innerHTML = "";
 		document.getElementById("sideBar").innerHTML = "";
 		document.getElementById("chatBox").innerHTML = "";
+		document.getElementById("meeting-button").style.display = "none";
 		currentUser = null;
 		currentConversation = null;
 		contacts = {};
@@ -43,6 +44,7 @@ function setCurrentUser(profile) {
 	currentUser = profile;
 	document.getElementById("currentUser").innerHTML = currentUser.name;
 	getIssue();
+	document.getElementById("meeting-button").style.display = "block";
 }
 
 async function addContact(email) {
@@ -129,6 +131,14 @@ function addMsgToChat(msg) {
 	var chatDiv = document.getElementById("chatBox");
 	chatDiv.appendChild(msgDiv);
 	chatDiv.scrollTop = chatDiv.scrollHeight;
+}
+
+function startMeeting() {
+	var ids = new Array();
+	Object.keys(contacts).forEach(function(key) {
+		ids.push(key);
+	});
+	client.meetings.startGroupMeeting(ids);
 }
 		
 function getIssue() {
