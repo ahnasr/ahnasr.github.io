@@ -1,6 +1,6 @@
 {
 	"name": "Chime Chat",
-	"description": "Atlassian Chime Chat app",
+	"description": "JIRA Issues Chime Chat app",
 	"key": "com.chime.chat",
 	"baseUrl": "https://ahnasr.github.io/issues.chat",
 	"vendor": {
