@@ -142,14 +142,12 @@ function getIssue() {
 				response = JSON.parse(response);
 				var responseText = JSON.stringify(response);
 				console.log(responseText);
-				var reporterEmail = response.issues[0].fields.reporter.emailAddress;
-				var assigneeEmail = response.issues[0].fields.assignee.emailAddress;
-				console.log(reporterEmail);
-				console.log(assigneeEmail);
-				if(reporterEmail != currentUser.primaryEmail)
-					addContact(reporterEmail);
-				if(assigneeEmail != currentUser.primaryEmail)
-					addContact(assigneeEmail);
+				var reporter = response.issues[0].fields.reporter;
+				if(reporter.emailAddress != currentUser.primaryEmail)
+					addContact(reporter.emailAddress);
+				var assignee = response.issues[0].fields.assignee;
+				if(assignee && assignee.emailAddress != reporter.emailAddress && assignee.emailAddress != currentUser.primaryEmail)
+					addContact(assignee.emailAddress);
 			},
 			error: function() {
 				console.log(arguments);
