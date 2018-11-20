@@ -42,9 +42,9 @@ function setLoginStatus(isAuthenticated) {
 function setCurrentUser(profile) {
 	currentUser = profile;
 	document.getElementById("currentUser").innerHTML = currentUser.name;
-	getIssue();
-	//addContact("liyuchun@amazon.com");
-	//addContact("slemahm@amazon.com")
+	//getIssue();
+	addContact("liyuchun@amazon.com");
+	addContact("slemahm@amazon.com");
 }
 
 function addContact(email) {
