@@ -29,7 +29,7 @@ function setLoginStatus(isAuthenticated) {
 		client.auth.getCurrentUserProfile().then(setCurrentUser); 
 	}
 	else {
-		document.getElementById("currentUser").innerHTML = "";
+		//document.getElementById("currentUser").innerHTML = "";
 		document.getElementById("meeting-button").style.display = "none";
 		currentUser = null;
 		contacts = new Array();
@@ -38,7 +38,7 @@ function setLoginStatus(isAuthenticated) {
 
 function setCurrentUser(profile) {
 	currentUser = profile;
-	document.getElementById("currentUser").innerHTML = currentUser.name;
+	//document.getElementById("currentUser").innerHTML = currentUser.name;
 	getIssue();
 	document.getElementById("meeting-button").style.display = "block";
 }
