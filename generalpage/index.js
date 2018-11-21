@@ -182,6 +182,9 @@ function createIssue(newIssue) {
 	  request({
 		url: '/rest/api/latest/issue',
 		// adjust to a POST instead of a GET
+		headers: {
+			"X-Atlassian-Token": "no-check"
+		},
 		type: 'POST',
 		data: JSON.stringify(issueData),
 		success: function(response) {
