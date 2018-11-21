@@ -187,6 +187,7 @@ function createIssue(newIssue) {
 		},
 		type: 'POST',
 		data: JSON.stringify(issueData),
+		contentType: 'multipart/form-data',
 		success: function(response) {
 		  // convert the string response to JSON
 		  response = JSON.parse(response);
