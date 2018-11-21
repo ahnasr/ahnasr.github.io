@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+	<title>Amazon Chime Web SDK Meeting</title>
+ </head>
+ <body>
+	<div id="loading-div" class="show">
+		Loading...
+	</div>
+	<table id="main-tab" class="hide">
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td align="right" style="border:1px solid; padding-left:1em; padding-right:1em;">
+							<a id="login-link" href="#msg-text" onclick="login()">Login</a>
+							<div id="currentUser"></div>
+							<a id="logout-link" href="#login-link" onclick="logout()">Logout</a>
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align:top;>
+							<button id="meeting-button" onclick="startMeeting()" style="display:none">Start Group Meeting</button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+    <script id="connect-loader">
+         (function() {
+             var getUrlParam = function (param) {
+                 var codedParam = (new RegExp(param + '=([^&]*)')).exec(window.location.search)[1];
+                 return decodeURIComponent(codedParam);
+             };
+
+             var baseUrl = getUrlParam('xdm_e') + getUrlParam('cp');
+             var options = document.getElementById('connect-loader').getAttribute('data-options');
+
+             var script = document.createElement("script");
+             script.src = baseUrl + '/atlassian-connect/all.js';
+
+             if(options) {
+                 script.setAttribute('data-options', options);
+             }
+
+             document.getElementsByTagName("head")[0].appendChild(script);
+         })();
+    </script>
+	
+	<script src="https://g.app.chime.aws/embed/sdk-0.1.2.js"></script>
+	<script src="index.js"></script>
+ </body>
+</html>
