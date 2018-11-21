@@ -120,8 +120,9 @@
     <script src="https://g.app.chime.aws/embed/sdk-0.1.2.js"></script>
     <script src="index.js"></script>
 	<script>
-		AP.resize('100%','100%');
-		AP.sizeToParent();
+	window.addEventListener('load', function(){AP.resize();});
+		
+		//AP.sizeToParent();
 	</script>
 </body>
 
