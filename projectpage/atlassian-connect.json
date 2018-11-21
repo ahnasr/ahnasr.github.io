@@ -1,8 +1,8 @@
 {
-	"name": "Chime Chat Page",
-	"description": "JIRA General Chime Chat app",
+	"name": "Chime Chat Project Page",
+	"description": "JIRA Project Chime Chat app",
 	"key": "com.chime.page.chat",
-	"baseUrl": "https://ahnasr.github.io/generalpage",
+	"baseUrl": "https://ahnasr.github.io/projectpage",
 	"vendor": {
 		"name": "Amazon, Inc.",
 		"url": "https://www.amazon.com"
@@ -15,11 +15,11 @@
 		"read", "write"
 	],
 	"modules": {
-		"generalPages": [
+		"jiraProjectPages": [
 			{
-				"url": "/index.html",
+				"url": "/index.html?projectId=${project.id}",
 				"key": "chime-chat-page",
-				"location": "system.top.navigation.bar",
+				"iconUrl": "/chime.png",
 				"name": {
 					"value": "Chime Chat"
 				}

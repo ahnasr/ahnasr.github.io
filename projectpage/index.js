@@ -47,6 +47,7 @@ function appendMessage(content, senderId) {
 		createIssue(content);
 	}
 	issueButton.innerHTML = 'Create Issue';
+	issueButton.classList.add('btn btn-primary');
     $("#chat-messages").append('<li class="list-group-item">' + '<b>' + senderName + '</b>' + ': ' + content + '</li>', issueButton);
 	$("#message-list").scrollTop($("#message-list")[0].scrollHeight);
 }
@@ -165,14 +166,16 @@ function showUnauthPage() {
 }
 
 function createIssue(newIssue) {
-	var issueFields = newIssue.split(',')
+	var issueFields = newIssue.split(',');
+	var urlParams = new URLSearchParams(window.location.search);
+	var projectId = urlParams.get("projectId");
 	var issueData = {
 	  "fields": {
 		"project": { 
-		  "key": issueFields[0]
+		  "id": projectId
 		},
-		"summary": issueFields[1],
-		"description": issueFields[2],
+		"summary": issueFields[0],
+		"description": (issueFields.length == 1)? "Added using chime chat" : issueFields[1],
 		"issuetype": {
 		  "name": "Task"
 		}
@@ -191,7 +194,7 @@ function createIssue(newIssue) {
 		success: function(response) {
 		  // convert the string response to JSON
 		  response = JSON.parse(response);
-
+		  alert("Issue was successfully added, key: " + response.key);
 		  // dump out the response to the console
 		  console.log(response);
 		},
