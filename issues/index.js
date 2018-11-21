@@ -33,7 +33,6 @@ function setLoginStatus(isAuthenticated) {
 		document.getElementById("currentUser").innerHTML = "";
 		document.getElementById("sideBar").innerHTML = "";
 		document.getElementById("chatBox").innerHTML = "";
-		document.getElementById("meeting-button").style.display = "none";
 		currentUser = null;
 		currentConversation = null;
 		contacts = {};
@@ -44,14 +43,9 @@ function setCurrentUser(profile) {
 	currentUser = profile;
 	document.getElementById("currentUser").innerHTML = currentUser.name;
 	getIssue();
-	document.getElementById("meeting-button").style.display = "block";
 }
 
 async function addContact(email) {
-	/*client.contact.addContact(email).then(function(profile) {
-		contacts[profile.profileId] = profile;
-		addToContactsBar(profile);
-	});*/
 	const profile = await client.contact.addContact(email);
 	contacts[profile.profileId] = profile;
 	addToContactsBar(profile);
@@ -64,18 +58,13 @@ function addToContactsBar(profile) {
 	contactDiv.onclick = function() {
 		var contactDivs = document.getElementsByClassName("contact");
 		for(var i = 0; i < contactDivs.length; i++)
-			contactDivs.item(i).style.borderStyle = "none";
-			//contactDivs.item(i).style.backgroundColor = "transparent";
-		//contactDiv.style.backgroundColor = "yellow";	
+			contactDivs.item(i).style.borderStyle = "none";	
 		contactDiv.style.borderStyle = "solid";
-		//contactDiv.style.borderColor = "white";
 		createConversation(profile.profileId);
 	}
 	
 	var contactsBar = document.getElementById("sideBar");
-	//var br = document.createElement("br");
 	contactsBar.appendChild(contactDiv);
-	//contactsBar.appendChild(br);
 }
 
 function createConversation(profileId) {
@@ -131,14 +120,6 @@ function addMsgToChat(msg) {
 	var chatDiv = document.getElementById("chatBox");
 	chatDiv.appendChild(msgDiv);
 	chatDiv.scrollTop = chatDiv.scrollHeight;
-}
-
-function startMeeting() {
-	var ids = new Array();
-	Object.keys(contacts).forEach(function(key) {
-		ids.push(key);
-	});
-	client.meetings.startGroupMeeting(ids);
 }
 		
 function getIssue() {
