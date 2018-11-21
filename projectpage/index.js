@@ -47,7 +47,7 @@ function appendMessage(content, senderId) {
 		createIssue(content);
 	}
 	issueButton.innerHTML = 'Create Issue';
-	issueButton.classList.add('btn btn-primary');
+	issueButton.classList.add('btn-primary');
     $("#chat-messages").append('<li class="list-group-item">' + '<b>' + senderName + '</b>' + ': ' + content + '</li>', issueButton);
 	$("#message-list").scrollTop($("#message-list")[0].scrollHeight);
 }
