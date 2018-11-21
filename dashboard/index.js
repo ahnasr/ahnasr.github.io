@@ -138,7 +138,7 @@ function getIssue() {
 				var responseText = JSON.stringify(response);
 				console.log(responseText);
 				for(var i = 0; i < response.issues.length; i++) {
-					await addIssuesContact(issues[i]);
+					await addIssuesContact(response.issues[i]);
 				}
 				/*var reporter = response.issues[0].fields.reporter;
 				if(reporter.emailAddress != currentUser.primaryEmail)
