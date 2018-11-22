@@ -45,8 +45,12 @@ async function addContact(email) {
 
 
 function startMeeting() {
-	if(contacts.length > 0)
+	if(contacts.length > 0) {
 		client.meetings.startGroupMeeting(contacts);
+	}
+	else {
+		alert("No one to meet with regarding this issue!");
+	}
 }
 		
 function getIssue() {
