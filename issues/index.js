@@ -44,10 +44,7 @@ function setLoginStatus(isAuthenticated) {
 
 function setCurrentUser(profile) {
 	currentUser = profile;
-	//getIssue();
-	document.getElementById("contacts-div").style.display = "block";
-	addContact("slemahm@amazon.com", "reporter");
-	addContact("ah.nasr@gmail.com", "assignee");
+	getIssue();
 }
 
 async function addContact(email, role) {
