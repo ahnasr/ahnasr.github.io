@@ -127,7 +127,7 @@ body {
 }
 
 #message-list {
-  max-height: 400px;
+  max-height: 390px;
   overflow-y: scroll;
 }
 
