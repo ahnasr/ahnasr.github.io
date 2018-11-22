@@ -47,8 +47,15 @@ function appendMessage(content, senderId) {
 		createIssue(content);
 	}
 	issueButton.innerHTML = 'Create Issue';
+	issueButton.classList.add('btn');
 	issueButton.classList.add('btn-primary');
-    $("#chat-messages").append('<li class="list-group-item">' + '<b>' + senderName + '</b>' + ': ' + content + '</li>', issueButton);
+	issueButton.classList.add('float-right');
+	const msgItem = document.createElement('li');
+	msgItem.classList.add('list-group-item');
+	msgItem.innerHTML = '<b>' + senderName + '</b>' + ': ' + content;
+	msgItem.appendChild(issueButton);
+    //$("#chat-messages").append('<li class="list-group-item">' + '<b>' + senderName + '</b>' + ': ' + content + '</li>', issueButton);
+	$("#chat-messages").append(msgItem);
 	$("#message-list").scrollTop($("#message-list")[0].scrollHeight);
 }
 
