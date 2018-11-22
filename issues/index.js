@@ -44,7 +44,10 @@ function setLoginStatus(isAuthenticated) {
 
 function setCurrentUser(profile) {
 	currentUser = profile;
-	getIssue();
+	//getIssue();
+	document.getElementById("contacts-div").style.display = "block";
+	addContact("slemahm@amazon.com", "reporter");
+	addContact("ah.nasr@gmail.com", "assignee");
 }
 
 async function addContact(email, role) {
@@ -98,8 +101,8 @@ function subscribeToConversationMessages() {
 }
 
 function createConversationMsg(event) {
-	if(event.keyCode == 13) {
-		var msg = document.getElementById("message-text").value;
+	var msg = document.getElementById("message-text").value;
+	if(event.keyCode == 13 && msg.value != "") {
 		client.chat.createConversationMessage(currentConversation.id, msg).then(function (result) {
 			document.getElementById("message-text").value = "";
 		});
@@ -107,21 +110,23 @@ function createConversationMsg(event) {
 }
 		
 function addMsgToChat(msg) {
-	var msgDiv = document.createElement("div");
-	var br = document.createElement("br");
-	if(msg.sender == currentUser.profileId) {
-		msgDiv.classList.add("darker");
-		msgDiv.innerHTML = "<strong>" + currentUser.name + ":</strong><br />";
-	}
-	else {
-		msgDiv.innerHTML = "<strong>" + contacts[msg.sender].name + " (" + contacts[msg.sender].role + ")" + ":</strong><br />";
-	}
-	msgDiv.innerHTML+= msg.content;
-	msgDiv.classList.add("container");
+	if(msg && msg.content) {
+		var msgDiv = document.createElement("div");
+		var br = document.createElement("br");
+		if(msg.sender == currentUser.profileId) {
+			msgDiv.classList.add("darker");
+			msgDiv.innerHTML = "<strong>" + currentUser.name + ": </strong>" + "&nbsp;";
+		}
+		else {
+			msgDiv.innerHTML = "<strong>" + contacts[msg.sender].name + " (" + contacts[msg.sender].role + ")" + ":</strong>" + "&nbsp;";
+		}
+		msgDiv.innerHTML+= msg.content;
+		msgDiv.classList.add("container");
 
-	var chatDiv = document.getElementById("message-div");
-	chatDiv.appendChild(msgDiv);
-	chatDiv.scrollTop = chatDiv.scrollHeight;
+		var chatDiv = document.getElementById("message-div");
+		chatDiv.appendChild(msgDiv);
+		chatDiv.scrollTop = chatDiv.scrollHeight;
+	}
 }
 
 function backToContacts() {
