@@ -99,7 +99,7 @@ function subscribeToConversationMessages() {
 
 function createConversationMsg(event) {
 	var msg = document.getElementById("message-text").value;
-	if(event.keyCode == 13 && msg.value != "") {
+	if(event.keyCode == 13 && msg && msg != "") {
 		client.chat.createConversationMessage(currentConversation.id, msg).then(function (result) {
 			document.getElementById("message-text").value = "";
 		});
