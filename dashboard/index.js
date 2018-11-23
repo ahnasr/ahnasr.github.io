@@ -93,7 +93,7 @@ function listConversationMsg() {
 		for(var i = messages.result.length - 1; i >= 0; i--) {
 			addMsgToChat(messages.result[i]);
 		}
-		createConversationMessage("About issue " + contactSelect.options[contactSelect.selectedIndex].text);
+		createConversationMsg("About issue " + contactSelect.options[contactSelect.selectedIndex].text);
 	});
 }
 
