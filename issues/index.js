@@ -13,7 +13,14 @@ function init() {
 }
 
 function login() {
-	client.auth.authenticate();
+	client.auth.checkIsAuthenticated().then(function(isAuthenticated) {
+		if(!isAuthenticated) {
+			client.auth.authenticate();
+		}
+		else {
+			setLoginStatus(isAuthenticated);
+		}
+	});
 }
 
 function logout() {
