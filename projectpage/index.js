@@ -236,7 +236,7 @@ function createIssue(newIssue) {
 		  "name": "Task"
 		},
 		"assignee":{
-			"emailAddress": document.getElementById("contact-select").value;
+			"emailAddress": document.getElementById("contact-select").value
 		}
 	  }
 	};
