@@ -222,7 +222,7 @@ function getJiraUsers() {
 }
 
 function createIssue(newIssue) {
-	var issueFields = newIssue.split(',');
+	var issueFields = newIssue.split(':');
 	var urlParams = new URLSearchParams(window.location.search);
 	var projectId = urlParams.get("projectId");
 	var issueData = {
@@ -234,6 +234,9 @@ function createIssue(newIssue) {
 		"description": (issueFields.length == 1)? "Added using chime chat" : issueFields[1],
 		"issuetype": {
 		  "name": "Task"
+		},
+		"assignee":{
+			"emailAddress": document.getElementById("contact-select").value;
 		}
 	  }
 	};
