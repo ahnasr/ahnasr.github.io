@@ -32,11 +32,22 @@ function start() {
         }
     })
 
-    $("#auth-button").click(authApi.authenticate);
+    $("#auth-button").click(login);
     $("#unauth-button").click(function() {
         authApi.signOut();
     });
 };
+
+function login() {
+	authApi.checkIsAuthenticated().then(function(isAuthenticated) {
+		if(!isAuthenticated) {
+			authApi.authenticate();
+		}
+		else {
+			showAuthPage();
+		}
+	});
+}
 
 // Append message to chat message wall
 function appendMessage(content, senderId) {
