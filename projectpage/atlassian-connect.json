@@ -22,7 +22,12 @@
 				"iconUrl": "/chime.png",
 				"name": {
 					"value": "Chime Chat"
-				}
+				},
+				"conditions": [
+					{
+						"condition": "user_is_logged_in"
+					}
+				]
 			}
 			
 		]

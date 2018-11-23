@@ -23,6 +23,11 @@
             "name": {
                 "value": "Issues Chime Meeting"
             },
+			"conditions": [
+				{
+					"condition": "user_is_logged_in"
+				}
+			],
             "url": "/index.html?issue_key={issue.key}&issue_id={issue.id}"
         }
     ]

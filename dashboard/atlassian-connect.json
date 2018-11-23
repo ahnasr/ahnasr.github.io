@@ -24,6 +24,11 @@
 			"description": {
 			  "value": "Amazon Chime Unresolved Issues Chat"
 			},
+			"conditions": [
+				{
+					"condition": "user_is_logged_in"
+				}
+			],
 			"url": "/index.html?dashboardId={dashboard.id}&dashboardItemId={dashboardItem.id}",
 			"configurable": true,
 			"thumbnailUrl": "/chime.png"
