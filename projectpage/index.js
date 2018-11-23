@@ -8,6 +8,7 @@ const nameMap = {};
 let currentProfile = {};
 
 function start() {
+	getJiraUsers();
     // Always check if the user is authenticated on page load to
     // to detemine what to render
     authApi.checkIsAuthenticated()
@@ -181,6 +182,25 @@ function showUnauthPage() {
     hideItem(".auth-item");
     hideItem(".view");
     hideItem("#chat-tab");
+}
+
+function getJiraUsers() {
+	var searchJql = 'username = %';
+	console.log(searchJql);
+	AP.require('request', function(request) {
+		request({
+			url: '/rest/api/latest/user/search?jql=' + encodeURIComponent(searchJql),
+			success: async function(response) {
+				// convert the string response to JSON
+				response = JSON.parse(response);
+				var responseText = JSON.stringify(response);
+				console.log(responseText);
+			},
+			error: function() {
+				console.log(arguments);
+			}    
+		});
+	});
 }
 
 function createIssue(newIssue) {

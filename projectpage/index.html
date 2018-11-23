@@ -63,8 +63,12 @@
                 <div id="contact-view" class="hidden view">
                   <div id="contact-error"></div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input id="add-contact-email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                    <!--<label for="exampleInputEmail1">Email address</label>
+                    <input id="add-contact-email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">-->
+					<label for="contact-select">Please select a contact to chat with</label>
+                    <select id="contact-select" class="form-control">
+						<option>Select</option>
+					</select>
                   </div>
                   <button class="btn btn-primary" onclick="handleAddContact()">Add contact</button>
                 </div>
