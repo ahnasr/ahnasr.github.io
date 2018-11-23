@@ -185,9 +185,11 @@ function showUnauthPage() {
 }
 
 function getJiraUsers() {
+	var urlParams = new URLSearchParams(window.location.search);
+	var projectId = urlParams.get("projectId");
 	AP.require('request', function(request) {
 		request({
-			url: '/rest/api/latest/user/search?username=%',
+			url: '/rest/api/latest/user/assignable/search?projectId=' + projectId,
 			success: async function(response) {
 				// convert the string response to JSON
 				response = JSON.parse(response);
