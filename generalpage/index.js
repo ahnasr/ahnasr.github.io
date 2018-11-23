@@ -190,7 +190,8 @@ function sendIssue(issueKey) {
 				var issue = response.issues[0];
 				var issueMsg = '[' + issue.key + ']' + issue.fields.summary + ': ';
 				issueMsg+= issue.fields.description? issue.fields.description : '';
-				issueMsg+= ' (reporter: ' + issue.fields.reporter.displayName + ', assignee: ' + issue.fields.assignee? issue.fields.assignee.displayName : 'unassigned' + ')'; 
+				var assignee = issue.fields.assignee? issue.fields.assignee.displayName : 'unassigned';
+				issueMsg+= ' (reporter: ' + issue.fields.reporter.displayName + ', assignee: ' + assignee  + ')'; 
 				chatApi.createConversationMessage(conversationId, issueMsg)
 					.then(function(res) {
 						$("#message-input").val('');
