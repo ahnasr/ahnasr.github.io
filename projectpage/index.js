@@ -138,25 +138,31 @@ function handleChatTabClick() {
 // Add contact and create conversation, and save conversation id
 // to global variable conversationId
 function handleAddContact() {
-    const email = $("#add-contact-email").val();
-    contactApi.addContact(email)
-        .then(function(res) {
-            chatApi.createConversation([res.profileId])
-                .then(function(res) {
-                    conversationId = res.id;
-                    const members = res.members;
-                    for (const member of members) {
-                        nameMap[member.id] = member.name;
-                    } 
-                    const chatName = members[0].id === currentProfile.profileId ? members[1].name : members[0].name;
-                    $('#chat-name').empty();
-                    $('#chat-name').append('Chat with: ' + chatName);
-                    renderItem("#chat-tab");
-                })
-                .catch(function(error) {
-                    appendError($('#contact-error'), error);
-                })
-        });
+	var contactSelect = document.getElementById("contact-select");
+	if(contactSelect.selectedIndex != 0) {
+		const email = contactSelect.value;
+		contactApi.addContact(email)
+			.then(function(res) {
+				chatApi.createConversation([res.profileId])
+					.then(function(res) {
+						conversationId = res.id;
+						const members = res.members;
+						for (const member of members) {
+							nameMap[member.id] = member.name;
+						} 
+						const chatName = members[0].id === currentProfile.profileId ? members[1].name : members[0].name;
+						$('#chat-name').empty();
+						$('#chat-name').append('Chat with: ' + chatName);
+						renderItem("#chat-tab");
+					})
+					.catch(function(error) {
+						appendError($('#contact-error'), error);
+					})
+			});
+	}
+	else {
+		alert("Please select a contact first!");
+	}
 }
 
 function handleSendMessage() {
