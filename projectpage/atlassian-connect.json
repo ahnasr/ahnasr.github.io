@@ -17,7 +17,7 @@
 	"modules": {
 		"jiraProjectPages": [
 			{
-				"url": "/index.html?projectId=${project.id}",
+				"url": "/index.html?projectId=${project.id}&projectKey=${project.key}",
 				"key": "chime-chat-page",
 				"iconUrl": "/chime.png",
 				"name": {

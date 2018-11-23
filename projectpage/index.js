@@ -185,9 +185,11 @@ function showUnauthPage() {
 }
 
 function getJiraUsers() {
+	var urlParams = new URLSearchParams(window.location.search);
+	var projectKey = urlParams.get("projectKey");
 	AP.require('request', function(request) {
 		request({
-			url: '/rest/api/latest/user/assignable/multiProjectSearch',
+			url: '/rest/api/latest/user/assignable/search?projectKey=' + projectKey,
 			success: async function(response) {
 				// convert the string response to JSON
 				response = JSON.parse(response);
