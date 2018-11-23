@@ -94,7 +94,8 @@ function listConversationMsg() {
 			addMsgToChat(messages.result[i]);
 		}
 		var contactSelect = document.getElementById("contact-select"); 
-		createConversationMsg("About issue " + contactSelect.options[contactSelect.selectedIndex].text);
+		var aboutMsg = "About issue " + contactSelect.options[contactSelect.selectedIndex].text;
+		client.chat.createConversationMessage(currentConversation.id, aboutMsg);
 	});
 }
 
