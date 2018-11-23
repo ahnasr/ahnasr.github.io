@@ -7,8 +7,9 @@
 <body>
   IT IS WORKING???!!! great no html cache1
 	<script>
-             script.src = 'test.js?v=' + Math.random();
-             document.body.appendChild(script);
+		 var script = document.createElement("script");
+		 script.src = 'test.js?v=' + Math.random();
+		 document.body.appendChild(script);
 	</script>
 	<script src="https://ahmednasrdev.atlassian.net/atlassian-connect/all.js"></script>
 </body>
