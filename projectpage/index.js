@@ -8,7 +8,6 @@ const nameMap = {};
 let currentProfile = {};
 
 function start() {
-	getJiraUsers();
     // Always check if the user is authenticated on page load to
     // to detemine what to render
     authApi.checkIsAuthenticated()
@@ -37,6 +36,7 @@ function start() {
     $("#unauth-button").click(function() {
         authApi.signOut();
     });
+	setTimeout(getJiraUsers, 500);
 };
 
 function login() {
