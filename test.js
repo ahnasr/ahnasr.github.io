@@ -1,1 +1,1 @@
-document.body.innerHTML+= "<br />ADDED BY JS";
+document.body.innerHTML+= "<br />ADDED BY JS, great no JS cache";
