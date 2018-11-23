@@ -6,6 +6,7 @@ const authApi = client.auth;
 let conversationId;
 const nameMap = {};
 let currentProfile = {};
+var jiraContacts;
 
 function start() {
     // Always check if the user is authenticated on page load to
@@ -205,12 +206,14 @@ function getJiraUsers() {
 				while(contactSelect.options.length > 1) {
 					contactSelect.remove(contactSelect.options.length - 1);
 				}
+				jiraContacts = new Array();
 				for(var i = 0; i < response.length; i++) {
 					if(response[i].emailAddress != currentProfile.primaryEmail) {
 						var contactOption = document.createElement("option");
 						contactOption.text = response[i].displayName;
 						contactOption.value = response[i].emailAddress;
 						contactSelect.add(contactOption);
+						jiraContacts.push(response[i].name)
 					}
 				}
 			},
@@ -236,7 +239,7 @@ function createIssue(newIssue) {
 		  "name": "Task"
 		},
 		"assignee":{
-			"emailAddress": document.getElementById("contact-select").value
+			"name": jiraContacts[document.getElementById("contact-select").selectedIndex - 1]
 		}
 	  }
 	};
