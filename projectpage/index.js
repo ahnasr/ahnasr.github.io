@@ -17,6 +17,7 @@ function start() {
                     .then(function(profile) {
                         currentProfile = profile;
                         showAuthPage();
+						getJiraUsers();
                     })
             } else {
                 showUnauthPage()
@@ -36,7 +37,6 @@ function start() {
     $("#unauth-button").click(function() {
         authApi.signOut();
     });
-	setTimeout(getJiraUsers, 500);
 };
 
 function login() {
@@ -195,6 +195,18 @@ function getJiraUsers() {
 				response = JSON.parse(response);
 				var responseText = JSON.stringify(response);
 				console.log(responseText);
+				var contactSelect = document.getElementById("contact-select");
+				while(contactSelect.options.length > 1) {
+					contactSelect.remove(contactSelect.options.length - 1);
+				}
+				for(var i = 0; i < response.length; i++) {
+					if(response[i].emailAddress != currentProfile.primaryEmail) {
+						var contactOption = document.createElement("option");
+						contactOption.text = response[i].displayName;
+						contactOption.value = response[i].emailAddress;
+						contactSelect.add(contactOption);
+					}
+				}
 			},
 			error: function() {
 				console.log(arguments);
