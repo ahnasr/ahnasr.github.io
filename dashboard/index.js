@@ -77,8 +77,11 @@ function createConversation() {
 			profileIds[0] = contactSelect.value;
 			client.chat.createConversation(profileIds).then(function(conversation) {
 				currentConversation = conversation;
-				listConversationMsg();
-				subscribeToConversationMessages();
+				var aboutMsg = "About issue " + contactSelect.options[contactSelect.selectedIndex].text;
+				client.chat.createConversationMessage(currentConversation.id, aboutMsg).then(function(result) {
+					listConversationMsg();
+					subscribeToConversationMessages();
+				});
 				document.getElementById("contacts-div").style.display = "none";
 				document.getElementById("chat-div").style.display = "block";
 			});
@@ -93,9 +96,6 @@ function listConversationMsg() {
 		for(var i = messages.result.length - 1; i >= 0; i--) {
 			addMsgToChat(messages.result[i]);
 		}
-		var contactSelect = document.getElementById("contact-select"); 
-		var aboutMsg = "About issue " + contactSelect.options[contactSelect.selectedIndex].text;
-		client.chat.createConversationMessage(currentConversation.id, aboutMsg);
 	});
 }
 
