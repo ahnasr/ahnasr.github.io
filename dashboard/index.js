@@ -81,7 +81,6 @@ function createConversation() {
 				subscribeToConversationMessages();
 				document.getElementById("contacts-div").style.display = "none";
 				document.getElementById("chat-div").style.display = "block";
-				createConversationMessage("About issue " + contactSelect.options[contactSelect.selectedIndex].text);
 			});
 	}
 	else {
@@ -94,6 +93,7 @@ function listConversationMsg() {
 		for(var i = messages.result.length - 1; i >= 0; i--) {
 			addMsgToChat(messages.result[i]);
 		}
+		createConversationMessage("About issue " + contactSelect.options[contactSelect.selectedIndex].text);
 	});
 }
 
@@ -124,7 +124,7 @@ function addMsgToChat(msg) {
 			msgDiv.innerHTML = "<strong>" + currentUser.name + ": </strong>" + "&nbsp;";
 		}
 		else {
-			msgDiv.innerHTML = "<strong>" + contacts[msg.sender].name + " (" + contacts[msg.sender].role + ")" + ":</strong>" + "&nbsp;";
+			msgDiv.innerHTML = "<strong>" + contacts[msg.sender].name + " (assignee)" + ":</strong>" + "&nbsp;";
 		}
 		msgDiv.innerHTML+= msg.content;
 		msgDiv.classList.add("container");
