@@ -1,0 +1,1 @@
+document.body.innerHTML+= "<br />ADDED BY JS";

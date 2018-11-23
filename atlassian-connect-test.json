@@ -1,7 +1,7 @@
 {
-	"name": "codepenTest",
-	"description": "codepen test",
-	"key": "com.codepen.test",
+	"name": "cacheTest",
+	"description": "cache test",
+	"key": "com.cache.test",
 	"baseUrl": "https://ahnasr.github.io",
 	"vendor": {
 		"name": "Testing, Inc.",
@@ -14,11 +14,11 @@
 	"modules": {
 		"generalPages": [
 			{
-				"url": "/codepencontainer.html",
-				"key": "codepen-test",
+				"url": "/test.html",
+				"key": "cache-test",
 				"location": "system.top.navigation.bar",
 				"name": {
-					"value": "codepen test"
+					"value": "cache test"
 				}
 			}
 			
