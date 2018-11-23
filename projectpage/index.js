@@ -185,11 +185,9 @@ function showUnauthPage() {
 }
 
 function getJiraUsers() {
-	var searchJql = 'username = %';
-	console.log(searchJql);
 	AP.require('request', function(request) {
 		request({
-			url: '/rest/api/latest/user/search?jql=' + encodeURIComponent(searchJql),
+			url: '/rest/api/latest/user/search?username=%',
 			success: async function(response) {
 				// convert the string response to JSON
 				response = JSON.parse(response);
