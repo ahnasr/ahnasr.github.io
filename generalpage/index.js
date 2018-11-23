@@ -54,7 +54,6 @@ function appendMessage(content, senderId) {
     if (!content) return;
     const senderName = nameMap[senderId];
     $("#chat-messages").append('<li class="list-group-item">' + '<b>' + senderName + '</b>' + ': ' + content + '</li>');
-	$("#chat-messages").append(msgItem);
 	$("#message-list").scrollTop($("#message-list")[0].scrollHeight);
 }
 
