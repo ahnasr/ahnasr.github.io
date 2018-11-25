@@ -1,1 +1,1 @@
-window.addEventListener('load', function() {document.body.innerHTML+= "<br />ADDED BY JS, great no JS cache3";});
+window.addEventListener('load', function() {document.body.innerHTML+= "<br />ADDED BY JS, great no JS cache4";});
